@@ -70,7 +70,7 @@ export default class DiscordBot {
   }
 
   async announce(msg: PocketMessage) {
-    for(let channel_id in this.channels) {
+    for(var channel_id of this.channels) {
       const channel = await this.client.channels.fetch(channel_id);
       if (msg.file !== '') {
         (channel as TextChannel).send({content: msg.text, files: [msg.file]});

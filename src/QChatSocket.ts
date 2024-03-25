@@ -58,7 +58,6 @@ class QChatSocket {
       account: this.pocket48Account,
       token: this.pocket48Token,
       linkAddresses: await this.nim.plugin.getQChatAddress({ ipType: 2 })
-      // linkAddresses: ['qchatweblink01.netease.im:443']
     });
 
     this.qChat.on('logined', this.handleLogined);

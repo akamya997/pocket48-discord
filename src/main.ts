@@ -1,6 +1,7 @@
-import './polyfill.cjs';
-import dayjs from 'dayjs';
+import './polyfill';
+import NimChatroomSocket from "./NimChatroomSocket";
 import QChatSocket from "./QChatSocket";
+import dayjs from 'dayjs';
 import DiscordBot, { PocketMessage } from './DiscordBot';
 import * as dotenv from 'dotenv';
 
@@ -96,11 +97,21 @@ ${ info.question }
 async function main() {
   dotenv.config();
   const bot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.CLIENT_ID);
+  // a magic to let the program run
+  const _socket = new NimChatroomSocket({
+    pocket48IsAnonymous: true,
+    pocket48Account: '',
+    pocket48Token: '',
+    pocket48RoomId: '1',
+    messageIgnore: true
+  });
+
   const roomSocket = new QChatSocket({
     pocket48Account: process.env.P48_ACCOUNT,
     pocket48Token: process.env.P48_PWD,
     pocket48ServerId: process.env.SERVER_ID
   });
+  await roomSocket.init();
   roomSocket.addQueue({
     id: "Forward idol msg",
     onmsgs: (event)=>{

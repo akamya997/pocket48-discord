@@ -1,0 +1,28 @@
+{
+  "name": "pocket48-discord",
+  "version": "1.0.0",
+  "main": "src/main.ts",
+  "scripts": {
+    "test": "ts-node src/main.ts"
+  },
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "@yxim/nim-web-sdk": "^8.9.124",
+    "dayjs": "^1.11.10",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "eventemitter3": "^5.0.1",
+    "jsdom": "^24.0.0",
+    "nim-web-sdk-ng": "^0.17.0"
+  }
+}

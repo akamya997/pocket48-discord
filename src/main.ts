@@ -130,7 +130,7 @@ async function main() {
 
       if (isIdolUser || isPresentText || isGiftText || isTeamVoice) {
         const msg2send = getRoomMessage(user, event);
-        if (msg2send) {
+        if (msg2send.text !== '') {
           bot.announce(msg2send);
           console.log('Bot announcing', msg2send);
         }

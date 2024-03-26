@@ -73,7 +73,7 @@ export default class DiscordBot {
     for(var channel_id of this.channels) {
       const channel = await this.client.channels.fetch(channel_id);
       if (msg.file !== '') {
-        (channel as TextChannel).send({content: msg.text, files: [msg.file]});
+        (channel as TextChannel).send({content: msg.text, files: [{attachment: msg.file, name: 'photo.jpg'}]});
       }
       else (channel as TextChannel).send(msg.text);
     }

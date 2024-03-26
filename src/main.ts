@@ -19,14 +19,12 @@ function getRoomMessage(user, data) {
   const nickName: string = user?.nickName ?? '';
   const msgTime: string = dayjs(data.time).format('YYYY-MM-DD HH:mm:ss');
   if (data.type === 'text') {
-    msg = `${ nickName }：${ data.body }
-时间：${ msgTime }$`;
+    msg = `${ nickName }：${ data.body }`;
   }
   else if (data.type === 'custom' && (data.attach.messageType === 'REPLY' || data.attach.messageType === 'GIFTREPLY')) {
     const replyInfo = data.attach.replyInfo ?? data.attach.giftReplyInfo;
     msg = `${ replyInfo.replyName }：${ replyInfo.replyText }
-${ nickName }：${ replyInfo.text }
-时间：${ msgTime }`;
+${ nickName }：${ replyInfo.text }`;
   }
   else if (data.type === 'image') {
     msg = `${ nickName } 发送了一张图片：

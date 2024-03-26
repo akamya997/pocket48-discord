@@ -16,6 +16,7 @@ function mp4Source(pathname: string): string {
 function getRoomMessage(user, data) {
   let msg: string = '';
   let file: string = '';
+  let fileName: string = '';
   const nickName: string = user?.nickName ?? '';
   const msgTime: string = dayjs(data.time).format('YYYY-MM-DD HH:mm:ss');
   if (data.type === 'text') {
@@ -28,24 +29,33 @@ ${ nickName }：${ replyInfo.text }`;
   }
   else if (data.type === 'image') {
     msg = `${ nickName } 发送了一张图片：
-${ msgTime }`;
+时间：${ msgTime }`;
     file = data.attach.url;
+    fileName = 'photo.jpg';
   }
   else if (data.type === 'audio') {
     msg = `${ nickName } 发送了一条语音：${ data.attach.url }
 时间：${ msgTime }`;
+    file = data.attach.url;
+    fileName = 'audio.mp3';
   }
   else if (data.type === 'video') {
     msg = `${ nickName } 发送了一个视频：${ data.attach.url }
 时间：${ msgTime }`;
+    file = data.attach.url;
+    fileName = 'video.mp4';
   }
   else if (data.type === 'custom' && data.attach.messageType === 'AUDIO') {
     msg = `${ nickName } 发送了一条语音：${ data.attach.url }
 时间：${ msgTime }`;
+    file = data.attach.url;
+    fileName = 'audio.mp3';
   }
   else if (data.type === 'custom' && data.attach.messageType === 'VIDEO') {
     msg = `${ nickName } 发送了一个视频：${ data.attach.url }
 时间：${ msgTime }`;
+    file = data.attach.url;
+    fileName = 'video.mp4';
   }
   else if (data.type === 'custom' && data.attach.messageType === 'LIVEPUSH') {
     msg = `${ nickName } 正在直播
@@ -79,6 +89,8 @@ ${ info.question }
     ${ info.question }
     回答：${ mp4Source(answer.url) }
     时间：${ msgTime }`;
+    file = mp4Source(answer.url);
+    fileName = answer.url;
   }
   else {
     // unimplemented info type
@@ -88,7 +100,8 @@ ${ info.question }
   }
   return {
     text: msg,
-    file
+    file,
+    fileName
   };
 }
 

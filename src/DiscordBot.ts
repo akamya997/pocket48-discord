@@ -3,6 +3,7 @@ import { Client, GatewayIntentBits, REST, Routes, TextChannel, AttachmentBuilder
 export interface PocketMessage {
   text: string,
   file: string,
+  fileName: string,
 }
 
 export default class DiscordBot {
@@ -73,7 +74,7 @@ export default class DiscordBot {
     for(var channel_id of this.channels) {
       const channel = await this.client.channels.fetch(channel_id);
       if (msg.file !== '') {
-        (channel as TextChannel).send({content: msg.text, files: [{attachment: msg.file, name: 'photo.jpg'}]});
+        (channel as TextChannel).send({content: msg.text, files: [{attachment: msg.file, name: msg.fileName}]});
       }
       else (channel as TextChannel).send(msg.text);
     }

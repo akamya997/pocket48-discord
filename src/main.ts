@@ -2,6 +2,8 @@ import './polyfill';
 import NimChatroomSocket from "./NimChatroomSocket";
 import QChatSocket from "./QChatSocket";
 import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import DiscordBot, { PocketMessage } from './DiscordBot';
 import * as dotenv from 'dotenv';
 
@@ -106,6 +108,9 @@ ${ info.question }
 }
 
 async function main() {
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault('Asia/Shanghai');
   dotenv.config();
   const bot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.CLIENT_ID);
   // a magic to let the program run

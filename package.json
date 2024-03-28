@@ -7,7 +7,8 @@
     "build": "rimraf ./dist && tsc",
     "start": "pm2 start dist/main.js",
     "prettier": "npx prettier --write \"src/**/*.ts\"",
-    "prettier:check": "npx prettier --check \"src/**/*.ts\""
+    "prettier:check": "npx prettier --check \"src/**/*.ts\"",
+    "lint": "npx eslint --max-warnings 0 src --ext .ts"
   },
   "license": "AGPL-3.0",
   "devDependencies": {

@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import NIM_SDK from '@yxim/nim-web-sdk/dist/SDK/NIM_Web_SDK_nodejs.js';
-import type NIM_Web_Chatroom from '@yxim/nim-web-sdk/dist/SDK/NIM_Web_Chatroom_nodejs';
+import type NIM_Web_Chatroom from '@yxim/nim-web-sdk/dist/SDK/NIM_Web_Chatroom_nodejs'; // eslint-disable-line camelcase
 import type { NIMChatroomMessage } from '@yxim/nim-web-sdk/dist/SDK/NIM_Web_Chatroom/NIMChatroomMessageInterface';
 
 const appKey = 'NjMyZmVmZjFmNGM4Mzg1NDFhYjc1MTk1ZDFjZWIzZmE=';
@@ -39,7 +39,7 @@ class NimChatroomSocket {
   public pocket48Token?: string;
   public pocket48RoomId?: string;
   public queues: Array<Queue>;
-  public nimChatroomSocket: NIM_Web_Chatroom | undefined; // 口袋48
+  public nimChatroomSocket: NIM_Web_Chatroom | undefined; // eslint-disable-line camelcase
 
   constructor (arg: NimChatroomSocketArgs) {
     this.pocket48IsAnonymous = arg.pocket48IsAnonymous; // 是否为游客模式
@@ -140,6 +140,7 @@ class NimChatroomSocket {
         // @ts-ignore
         guest,
         done (err: Error, arg1: { members: Array<ChatroomMember> }): void {
+          console.log(err);
           resolve(arg1?.members ?? []);
         }
       });

@@ -1,4 +1,3 @@
-import NimChatroomSocket from "./NimChatroomSocket";
 import QChatSocket from "./QChatSocket";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
@@ -106,19 +105,6 @@ ${info.question}
     file,
     fileName,
   };
-}
-
-// a magic to let the program run
-// eslint-disable-next-line no-unused-vars
-function magic() {
-  const _socket = new NimChatroomSocket({
-    pocket48IsAnonymous: true,
-    pocket48Account: "",
-    pocket48Token: "",
-    pocket48RoomId: "1",
-    messageIgnore: true,
-  });
-  return _socket;
 }
 
 async function main() {

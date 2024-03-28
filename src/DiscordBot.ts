@@ -4,7 +4,6 @@ import {
   REST,
   Routes,
   TextChannel,
-  AttachmentBuilder,
 } from "discord.js";
 
 export interface PocketMessage {
@@ -28,7 +27,7 @@ export default class DiscordBot {
     this.client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
     this.client.on("ready", () => {
-      console.log(`Logged in as ${this.client.user.tag}!`);
+      console.log(`Logged in as ${this.client.user!.tag}!`);
     });
 
     this.resolve_command();

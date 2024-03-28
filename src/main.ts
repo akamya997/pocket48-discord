@@ -4,8 +4,10 @@ import QChatSocket from "./QChatSocket";
 import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
 import utc from "dayjs/plugin/utc";
-import DiscordBot, { PocketMessage } from "./DiscordBot";
+import DiscordBot from "./DiscordBot";
 import * as dotenv from "dotenv";
+import { UserV2, CustomMessageAllV2 } from './message';
+import type { QChatSystemNotification } from 'nim-web-sdk-ng/dist/QCHAT_BROWSER_SDK/QChatMsgServiceInterface';
 
 function mp4Source(pathname: string): string {
   if (!pathname || pathname === "") return "";
@@ -15,7 +17,7 @@ function mp4Source(pathname: string): string {
   return url.href;
 }
 
-function getRoomMessage(user, data) {
+function getRoomMessage(user: UserV2, data: CustomMessageAllV2) {
   let msg: string = "";
   let file: string = "";
   let fileName: string = "";
@@ -112,7 +114,7 @@ async function main() {
   dayjs.extend(timezone);
   dayjs.tz.setDefault("Asia/Shanghai");
   dotenv.config();
-  const bot = new DiscordBot(process.env.DISCORD_TOKEN, process.env.CLIENT_ID);
+  const bot = new DiscordBot(process.env.DISCORD_TOKEN!, process.env.CLIENT_ID!);
   // a magic to let the program run
   const _socket = new NimChatroomSocket({
     pocket48IsAnonymous: true,
@@ -123,14 +125,14 @@ async function main() {
   });
 
   const roomSocket = new QChatSocket({
-    pocket48Account: process.env.P48_ACCOUNT,
-    pocket48Token: process.env.P48_PWD,
-    pocket48ServerId: process.env.SERVER_ID,
+    pocket48Account: process.env.P48_ACCOUNT!,
+    pocket48Token: process.env.P48_PWD!,
+    pocket48ServerId: process.env.SERVER_ID!,
   });
   await roomSocket.init();
   roomSocket.addQueue({
     id: "Forward idol msg",
-    onmsgs: (event) => {
+    onmsgs: (event: CustomMessageAllV2) => {
       let type: string = event.type;
 
       if (
@@ -157,7 +159,7 @@ async function main() {
         }
       }
     },
-    onsystemmsgs: (event) => {},
+    onsystemmsgs: (event: QChatSystemNotification) => {},
   });
 }
 

@@ -108,14 +108,9 @@ ${info.question}
   };
 }
 
-async function main () {
-  dayjs.extend(utc);
-  dayjs.extend(timezone);
-  dayjs.tz.setDefault('Asia/Shanghai');
-  dotenv.config();
-  const bot = new DiscordBot(process.env.DISCORD_TOKEN!, process.env.CLIENT_ID!);
-  // a magic to let the program run
-  // eslint-disable-next-line no-unused-vars
+// a magic to let the program run
+// eslint-disable-next-line no-unused-vars
+function magic () {
   const _socket = new NimChatroomSocket({
     pocket48IsAnonymous: true,
     pocket48Account: '',
@@ -123,6 +118,15 @@ async function main () {
     pocket48RoomId: '1',
     messageIgnore: true
   });
+  return _socket;
+}
+
+async function main () {
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  dayjs.tz.setDefault('Asia/Shanghai');
+  dotenv.config();
+  const bot = new DiscordBot(process.env.DISCORD_TOKEN!, process.env.CLIENT_ID!);
 
   const roomSocket = new QChatSocket({
     pocket48Account: process.env.P48_ACCOUNT!,

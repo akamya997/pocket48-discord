@@ -1,4 +1,4 @@
-import type { UploadFileResult } from 'nim-web-sdk-ng/dist/QCHAT_BROWSER_SDK/CloudStorageServiceInterface';
+import type { UploadFileResult } from "nim-web-sdk-ng/dist/QCHAT_BROWSER_SDK/CloudStorageServiceInterface";
 
 /* 发言类型v2 */
 export interface UserV2 {
@@ -33,13 +33,13 @@ export interface CustomMessageV2 {
 
 // 普通信息
 export interface TEXTMessageV2 extends CustomMessageV2 {
-  type: 'text';
+  type: "text";
   body: string;
 }
 
 // 图片信息
 export interface IMAGEMessageV2 extends CustomMessageV2 {
-  type: 'image';
+  type: "image";
   attach: UploadFileResult;
 }
 
@@ -51,9 +51,9 @@ export interface ReplyInfo {
 }
 
 export interface REPLYMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'REPLY' | 'GIFTREPLY';
+    messageType: "REPLY" | "GIFTREPLY";
     replyInfo: ReplyInfo;
     giftReplyInfo: ReplyInfo;
   };
@@ -61,37 +61,37 @@ export interface REPLYMessageV2 extends CustomMessageV2 {
 
 // 发送语音
 export interface AUDIOMessageV2 extends CustomMessageV2 {
-  type: 'audio';
+  type: "audio";
   attach: UploadFileResult;
 }
 
 export interface AUDIOMessage1_V2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'AUDIO';
+    messageType: "AUDIO";
     url: string;
   };
 }
 
 // 发送短视频
 export interface VIDEOMessageV2 extends CustomMessageV2 {
-  type: 'video';
+  type: "video";
   attach: UploadFileResult;
 }
 
 export interface VIDEOMessage1_V2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'VIDEO';
+    messageType: "VIDEO";
     url: string;
   };
 }
 
 // 直播
 export interface LIVEPUSHMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'LIVEPUSH';
+    messageType: "LIVEPUSH";
     livePushInfo: {
       liveCover: string;
       liveTitle: string;
@@ -108,9 +108,9 @@ export interface FlipCardInfo {
 }
 
 export interface FLIPCARDMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'FLIPCARD';
+    messageType: "FLIPCARD";
     flipCardInfo: FlipCardInfo;
     filpCardInfo: FlipCardInfo;
   };
@@ -118,26 +118,26 @@ export interface FLIPCARDMessageV2 extends CustomMessageV2 {
 
 // 发送表情
 export interface EXPRESSMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'EXPRESS';
+    messageType: "EXPRESS";
   };
 }
 
 // 删除回复
 export interface DELETEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'DELETE';
+    messageType: "DELETE";
     targetId: string;
   };
 }
 
 // 禁言
 export interface DISABLE_SPEAKMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'DISABLE_SPEAK';
+    messageType: "DISABLE_SPEAK";
     targetId: string;
     sourceId: string;
   };
@@ -145,9 +145,9 @@ export interface DISABLE_SPEAKMessageV2 extends CustomMessageV2 {
 
 // 电台
 export interface SESSION_DIANTAIMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'SESSION_DIANTAI';
+    messageType: "SESSION_DIANTAI";
     streamPath: string;
   };
 }
@@ -168,9 +168,9 @@ export interface FlipCardAudioInfo {
 }
 
 export interface FLIPCARD_AUDIOMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'FLIPCARD_AUDIO';
+    messageType: "FLIPCARD_AUDIO";
     flipCardInfo: FlipCardAudioInfo;
     flipCardAudioInfo: FlipCardAudioInfo;
     filpCardInfo: FlipCardAudioInfo;
@@ -197,9 +197,9 @@ export interface FlipCardVideoInfo {
 }
 
 export interface FLIPCARD_VIDEOMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'FLIPCARD_VIDEO';
+    messageType: "FLIPCARD_VIDEO";
     flipCardInfo: FlipCardVideoInfo;
     flipCardVideoInfo: FlipCardVideoInfo;
     filpCardInfo: FlipCardVideoInfo;
@@ -209,9 +209,9 @@ export interface FLIPCARD_VIDEOMessageV2 extends CustomMessageV2 {
 
 // 2021表情包
 export interface EXPRESSIMAGEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'EXPRESSIMAGE';
+    messageType: "EXPRESSIMAGE";
     expressImgInfo: {
       emotionRemote: string;
     };
@@ -224,9 +224,9 @@ export interface EXPRESSIMAGEMessageV2 extends CustomMessageV2 {
 
 // open live
 export interface OPEN_LIVEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'OPEN_LIVE';
+    messageType: "OPEN_LIVE";
     openLiveInfo: {
       title: string;
       id: number;
@@ -238,9 +238,9 @@ export interface OPEN_LIVEMessageV2 extends CustomMessageV2 {
 
 // trip info
 export interface TRIP_INFOMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'TRIP_INFO';
+    messageType: "TRIP_INFO";
     tripInfo: {
       tripType: string;
       id: number;
@@ -254,9 +254,9 @@ export interface TRIP_INFOMessageV2 extends CustomMessageV2 {
 
 // 礼物
 export interface PRESENT_NORMALMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'PRESENT_NORMAL';
+    messageType: "PRESENT_NORMAL";
     giftInfo: {
       giftName: string;
       picPath: string;
@@ -266,9 +266,9 @@ export interface PRESENT_NORMALMessageV2 extends CustomMessageV2 {
 
 // 投票信息：投票时，同时触发 PRESENT_TEXT 和 PRESENT_FULLSCREEN 两种类型
 export interface PRESENT_TEXTMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'PRESENT_TEXT';
+    messageType: "PRESENT_TEXT";
     giftInfo: {
       fullPicPath?: string; // 完整图片，图片地址以 https://source.48.cn/ 开头
       giftId: string;
@@ -282,9 +282,9 @@ export interface PRESENT_TEXTMessageV2 extends CustomMessageV2 {
 
 // 发起投票
 export interface VOTEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'VOTE';
+    messageType: "VOTE";
     voteInfo: {
       text: string;
       content: string;
@@ -294,25 +294,26 @@ export interface VOTEMessageV2 extends CustomMessageV2 {
 
 // 房间关闭信息
 export interface CLOSE_ROOM_CHATMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'CLOSE_ROOM_CHAT';
+    messageType: "CLOSE_ROOM_CHAT";
   };
 }
 
 // 中秋活动
-export interface ZHONGQIU_ACTIVITY_LANTERN_FANSMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+export interface ZHONGQIU_ACTIVITY_LANTERN_FANSMessageV2
+  extends CustomMessageV2 {
+  type: "custom";
   attach: {
-    messageType: 'ZHONGQIU_ACTIVITY_LANTERN_FANS';
+    messageType: "ZHONGQIU_ACTIVITY_LANTERN_FANS";
   };
 }
 
 // 房间电台
 export interface TEAM_VOICEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'TEAM_VOICE';
+    messageType: "TEAM_VOICE";
     voiceInfo: {
       voiceStarInfoList: Array<{
         userId: number;
@@ -322,26 +323,26 @@ export interface TEAM_VOICEMessageV2 extends CustomMessageV2 {
         voiceStatus: boolean;
       }>;
       streamUrl: string;
-      operateType: 'upVoice';
+      operateType: "upVoice";
     };
   };
 }
 
 export interface PERSONAL_VOICEMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'PERSONAL_VOICE';
+    messageType: "PERSONAL_VOICE";
     personalVoiceInfo: {
-      operateType: 'closeSession';
+      operateType: "closeSession";
     };
   };
 }
 
 // 礼物，送礼物的不是本人
 export interface GIFT_TEXTMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'GIFT_TEXT';
+    messageType: "GIFT_TEXT";
     giftInfo: {
       acceptUserId: number;
       acceptUserName: string;
@@ -349,20 +350,20 @@ export interface GIFT_TEXTMessageV2 extends CustomMessageV2 {
       giftName: string;
       giftNum: number;
       picPath: string;
-      tpNum: string | '0';
+      tpNum: string | "0";
     };
   };
 }
 
 // 红包
 export interface RED_PACKETMessageV2 extends CustomMessageV2 {
-  type: 'custom';
+  type: "custom";
   attach: {
-    messageType: 'RED_PACKET_2024';
+    messageType: "RED_PACKET_2024";
     creatorName: string;
     packedId: string;
     starId: number;
-    starName: string | '';
+    starName: string | "";
     coverUrl: string;
     coverHeight: number;
     coverWidth: number;

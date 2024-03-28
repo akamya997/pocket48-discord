@@ -1,8 +1,8 @@
-const { JSDOM } = require('jsdom');
+const { JSDOM } = require("jsdom");
 
-const dom = new JSDOM('<!DOCTYPE html><html><body></body></html>', {
-    url: 'https://example.com/'
-  });
+const dom = new JSDOM("<!DOCTYPE html><html><body></body></html>", {
+  url: "https://example.com/",
+});
 
 globalThis.window = dom.window;
 globalThis.document = dom.window.document;

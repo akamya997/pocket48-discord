@@ -1,7 +1,9 @@
+import type { UploadFileResult } from 'nim-web-sdk-ng/dist/QCHAT_BROWSER_SDK/CloudStorageServiceInterface';
+
 /* 发言类型v2 */
 export interface UserV2 {
   avatar: string;
-  level: `${ number }`;
+  level: `${number}`;
   nickName: string;
   roleId: number;
   teamLogo: string;
@@ -15,13 +17,13 @@ export interface CustomMessageV2 {
   serverId: string;
   ext?: `{
     "user": {
-      "avatar": ${ string },
-      "level": "${ number }",
-      "nickName": ${ string },
-      "roleId": ${ number },
-      "teamLogo": ${ string },
-      "userId": ${ number },
-      "vip": ${ boolean }
+      "avatar": ${string},
+      "level": "${number}",
+      "nickName": ${string},
+      "roleId": ${number},
+      "teamLogo": ${string},
+      "userId": ${number},
+      "vip": ${boolean}
     }
   }`;
   type: string;
@@ -34,7 +36,7 @@ export interface TEXTMessageV2 extends CustomMessageV2 {
   type: 'text';
   body: string;
 }
-  
+
 // 图片信息
 export interface IMAGEMessageV2 extends CustomMessageV2 {
   type: 'image';
@@ -45,7 +47,7 @@ export interface IMAGEMessageV2 extends CustomMessageV2 {
 export interface ReplyInfo {
   replyName: string;
   replyText: string; // 被回复的消息
-  text: string;      // 回复的消息
+  text: string; // 回复的消息
 }
 
 export interface REPLYMessageV2 extends CustomMessageV2 {
@@ -153,9 +155,9 @@ export interface SESSION_DIANTAIMessageV2 extends CustomMessageV2 {
 // 语音翻牌
 export interface FlipCardAudioInfo {
   answer: `{
-    "url": "${ string }.aac",
-    "duration": ${ number },
-    "size": ${ number }
+    "url": "${string}.aac",
+    "duration": ${number},
+    "size": ${number}
   }`;
   answerId: string;
   answerType: string;
@@ -179,12 +181,12 @@ export interface FLIPCARD_AUDIOMessageV2 extends CustomMessageV2 {
 // 视频翻牌
 export interface FlipCardVideoInfo {
   answer: `{
-    "url": "${ string }.mp4",
-    "duration": ${ number },
-    "size": ${ number },
-    "previewImg": "${ string }",
-    "width": ${ number },
-    "height": ${ number }
+    "url": "${string}.mp4",
+    "duration": ${number},
+    "size": ${number},
+    "previewImg": "${string}",
+    "width": ${number},
+    "height": ${number}
   }`;
   answerId: string;
   answerType: string;
@@ -270,8 +272,8 @@ export interface PRESENT_TEXTMessageV2 extends CustomMessageV2 {
     giftInfo: {
       fullPicPath?: string; // 完整图片，图片地址以 https://source.48.cn/ 开头
       giftId: string;
-      giftName: `${ number }投票权`; // 礼物名称
-      giftNum: number;  // 礼物数量
+      giftName: `${number}投票权`; // 礼物名称
+      giftNum: number; // 礼物数量
       picPath: string;
       special: true;
     };

@@ -5,6 +5,7 @@ import {
   Routes,
   TextChannel,
 } from "discord.js";
+import channelDb from "./db";
 
 export interface PocketMessage {
   text: string;
@@ -16,12 +17,12 @@ export default class DiscordBot {
   token: string;
   client_id: string;
   client: Client;
-  channels: string[];
+  channelDb: channelDb;
 
   constructor(token: string, clientId: string) {
     this.token = token;
     this.client_id = clientId;
-    this.channels = [];
+    this.channelDb = new channelDb();
     this.register();
 
     this.client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -44,6 +45,10 @@ export default class DiscordBot {
       {
         name: "register",
         description: "Register current channel",
+      },
+      {
+        name: "unregister",
+        description: "Remove this channel from announcement group",
       },
     ];
 
@@ -69,16 +74,27 @@ export default class DiscordBot {
       if (interaction.commandName === "ping") {
         await interaction.reply("Pong!");
       } else if (interaction.commandName === "register") {
-        console.log(interaction.channelId, "is added to channel list");
-        this.channels.push(interaction.channelId);
-        await interaction.reply("成功添加此频道");
+        console.log("try adding", interaction.channelId);
+        if (await this.channelDb.exist(interaction.channelId))
+          await interaction.reply("频道已存在");
+        else {
+          await interaction.reply("成功添加此频道");
+          await this.channelDb.insert(interaction.channelId);
+        }
+      } else if (interaction.commandName === "unregister") {
+        console.log("try removing", interaction.channelId);
+        if (await this.channelDb.exist(interaction.channelId)) {
+          await this.channelDb.delete(interaction.channelId);
+          await interaction.reply("成功移除此频道");
+        } else await interaction.reply("频道不在通知列表中");
       }
     });
   }
 
   async announce(msg: PocketMessage) {
-    for (const channelId of this.channels) {
-      const channel = await this.client.channels.fetch(channelId);
+    const channels = await this.channelDb.getAllId();
+    for (const channelRow of channels) {
+      const channel = await this.client.channels.fetch(channelRow.channelId);
       if (msg.file !== "") {
         (channel as TextChannel).send({
           content: msg.text,

@@ -30,6 +30,7 @@
     "dotenv": "^16.4.5",
     "eventemitter3": "^5.0.1",
     "jsdom": "^24.0.0",
-    "nim-web-sdk-ng": "^0.17.0"
+    "nim-web-sdk-ng": "^0.17.0",
+    "sqlite3": "^5.1.7"
   }
 }

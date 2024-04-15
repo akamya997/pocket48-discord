@@ -75,6 +75,16 @@ ${info.question}
 时间：${msgTime}`;
   } else if (
     data.type === "custom" &&
+    data.attach.messageType === "EXPRESSIMAGE"
+  ) {
+    msg = `${nickName}：`;
+    file =
+      data.attach?.expressImageInfo?.emotionRemote ??
+      data.attach?.expressImgInfo?.emotionRemote ??
+      data.attach.emotionRemote;
+    fileName = "image.jpg";
+  } else if (
+    data.type === "custom" &&
     (data.attach.messageType === "FLIPCARD_AUDIO" ||
       data.attach.messageType === "FLIPCARD_VIDEO")
   ) {

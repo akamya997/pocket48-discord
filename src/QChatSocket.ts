@@ -49,6 +49,7 @@ class QChatSocket {
       appkey: atob(appKey),
       account: this.pocket48Account,
       token: this.pocket48Token,
+      debugLevel: "debug",
     });
 
     await this.nim.connect();

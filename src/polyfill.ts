@@ -28,7 +28,7 @@ function magic() {
   return _socket;
 }
 
-class InterceptWebSocket extends window.WebSocket {}
+class InterceptWebSocket extends globalThis.window.WebSocket {}
 
 const old_send = InterceptWebSocket.prototype.send;
 InterceptWebSocket.prototype.send = function () {

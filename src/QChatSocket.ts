@@ -49,7 +49,7 @@ class QChatSocket {
       appkey: atob(appKey),
       account: this.pocket48Account,
       token: this.pocket48Token,
-      debugLevel: "debug",
+      // debugLevel: "debug",
     });
 
     await this.nim.connect();
@@ -88,7 +88,7 @@ class QChatSocket {
     });
 
     this.serverInfo = serverInfo[0];
-    console.log("serverInfo", this.serverInfo, "订阅servers", result);
+    // console.log("serverInfo", this.serverInfo, "订阅servers", result);
 
     await this.qChat!.qchatServer.subscribeServer({
       type: 4,

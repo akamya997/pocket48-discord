@@ -42,7 +42,7 @@ InterceptWebSocket.prototype.send = function () {
       /* noop */
     }
 
-    if (data && data?.SER === 1 && data?.SID === 2 && data?.Q?.length) {
+    if (data && data?.SID === 2 && data?.Q?.length) {
       for (const Q of data.Q) {
         if (/Property/i.test(Q.t) && Q.v) {
           Q.v["3"] = 2;
@@ -51,7 +51,7 @@ InterceptWebSocket.prototype.send = function () {
           break;
         }
       }
-    } else if (data && data?.SER === 1 && data?.SID === 24 && data?.Q?.length) {
+    } else if (data && data?.SID === 24 && data?.Q?.length) {
       for (const Q of data.Q) {
         if (/Property/i.test(Q.t) && Q.v) {
           Q.v["6"] = 2;
